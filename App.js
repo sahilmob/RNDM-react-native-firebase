@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Header, Left, Right, Fab } from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import { ScaledSheet } from "react-native-size-matters";
 export default class App extends Component {
 	render() {
 		return (
@@ -22,7 +23,7 @@ export default class App extends Component {
 	}
 }
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
 	container: {
 		flex: 1,
 		alignItems: "center",
