@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Header, Left, Right } from "native-base";
+import { Header, Left, Right, Fab } from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome5";
 export default class App extends Component {
 	render() {
@@ -14,6 +14,9 @@ export default class App extends Component {
 						<Icon name="ellipsis-v" color="white" />
 					</Right>
 				</Header>
+				<Fab position="bottomRight" style={styles.fab}>
+					<Icon name="envelope" />
+				</Fab>
 			</View>
 		);
 	}
@@ -31,5 +34,8 @@ const styles = StyleSheet.create({
 	},
 	headerText: {
 		color: "white"
+	},
+	fab: {
+		backgroundColor: "#F5820c"
 	}
 });
