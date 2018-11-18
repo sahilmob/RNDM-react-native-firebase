@@ -8,10 +8,10 @@ export default class App extends Component {
 		return (
 			<View style={styles.container}>
 				<Header style={styles.header}>
-					<Left>
+					<Left style={styles.headerLeft}>
 						<Text style={styles.headerText}>RNDM</Text>
 					</Left>
-					<Right>
+					<Right style={styles.headerRight}>
 						<Icon name="ellipsis-v" color="white" />
 					</Right>
 				</Header>
@@ -32,6 +32,12 @@ const styles = ScaledSheet.create({
 	header: {
 		width: "100%",
 		backgroundColor: "#363636"
+	},
+	headerLeft: {
+		marginLeft: "10@s"
+	},
+	headerRight: {
+		marginRight: "10@s"
 	},
 	headerText: {
 		color: "white"
