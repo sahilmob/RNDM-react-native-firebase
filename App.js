@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Header, Left, Right } from "native-base";
+import Icon from "react-native-vector-icons/FontAwesome5";
 export default class App extends Component {
 	render() {
 		return (
@@ -10,7 +11,7 @@ export default class App extends Component {
 						<Text style={styles.headerText}>RNDM</Text>
 					</Left>
 					<Right>
-						<Text>Button</Text>
+						<Icon name="ellipsis-v" color="white" />
 					</Right>
 				</Header>
 			</View>
