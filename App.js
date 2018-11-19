@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Header, Left, Right, Fab } from "native-base";
+import { TouchableNativeFeedback, Text, View } from "react-native";
+import { Header, Left, Right, Fab, Button } from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import { ScaledSheet } from "react-native-size-matters";
+import { ScaledSheet, scale } from "react-native-size-matters";
 export default class App extends Component {
 	render() {
 		return (
@@ -12,7 +12,11 @@ export default class App extends Component {
 						<Text style={styles.headerText}>RNDM</Text>
 					</Left>
 					<Right style={styles.headerRight}>
-						<Icon name="ellipsis-v" color="white" />
+						<TouchableNativeFeedback>
+							<View style={styles.ellipsisBtn}>
+								<Icon name="ellipsis-v" color="white" />
+							</View>
+						</TouchableNativeFeedback>
 					</Right>
 				</Header>
 				<Fab position="bottomRight" style={styles.fab}>
@@ -41,6 +45,14 @@ const styles = ScaledSheet.create({
 	},
 	headerText: {
 		color: "white"
+	},
+	ellipsisBtn: {
+		width: scale(20),
+		height: scale(20),
+		backgroundColor: "#1e1e1e",
+		borderRadius: scale(10),
+		alignItems: "center",
+		justifyContent: "center"
 	},
 	fab: {
 		backgroundColor: "#F5820c"
