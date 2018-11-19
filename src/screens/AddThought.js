@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { View } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
 import { Form, Item, Input, Button, Text } from "native-base";
+import firebase from "react-native-firebase";
+
 import LocalButton from "../components/ui/localbutton";
 
 export default class AddThought extends Component {
@@ -24,6 +26,15 @@ export default class AddThought extends Component {
 		thought: "",
 		formValid: false
 	};
+
+	componentDidMount() {
+		firebase
+			.auth()
+			.signInAnonymously()
+			.then(user => {
+				console.log(user.isAnonymous);
+			});
+	}
 
 	handleTypeChange = type => {
 		this.setState({
