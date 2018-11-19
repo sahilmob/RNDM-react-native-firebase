@@ -5,21 +5,20 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { ScaledSheet } from "react-native-size-matters";
 
 export default class Home extends Component {
+	static navigationOptions = navProps => {
+		return {
+			headerStyle: {
+				backgroundColor: "#363636"
+			},
+			headerTitle: "RNDM",
+			headerTitleStyle: {
+				color: "white"
+			}
+		};
+	};
 	render() {
 		return (
 			<View style={styles.container}>
-				<Header style={styles.header}>
-					<Left style={styles.headerLeft}>
-						<Text style={styles.headerText}>RNDM</Text>
-					</Left>
-					<Right style={styles.headerRight}>
-						<TouchableNativeFeedback>
-							<View style={styles.ellipsisBtn}>
-								<Icon name="ellipsis-v" color="white" />
-							</View>
-						</TouchableNativeFeedback>
-					</Right>
-				</Header>
 				<Fab
 					position="bottomRight"
 					style={styles.fab}
