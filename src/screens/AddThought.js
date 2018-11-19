@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { View, TextInput } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
-import { Button } from "native-base";
+import { Form, Item, Input, Button, Text } from "native-base";
 import LocalButton from "../components/ui/localbutton";
 
 export default class AddThought extends Component {
@@ -19,7 +19,10 @@ export default class AddThought extends Component {
 	};
 
 	state = {
-		type: "funny"
+		type: "funny",
+		username: "",
+		thought: "",
+		formValid: false
 	};
 
 	handleTypeChange = type => {
@@ -28,8 +31,29 @@ export default class AddThought extends Component {
 		});
 	};
 
+	handleTextChange = (key, value) => {
+		this.setState(
+			{
+				[key]: value
+			},
+			() => {
+				//Destructured username and thoughts here instead for the beginning of the method to get the latest value for them
+				const { username, thought } = this.state;
+				if (username.length > 0 && thought.length > 0) {
+					this.setState({
+						formValid: true
+					});
+				} else {
+					this.setState({
+						formValid: false
+					});
+				}
+			}
+		);
+	};
+
 	render() {
-		const { type } = this.state;
+		const { type, username, thought, formValid } = this.state;
 		return (
 			<View style={styles.container}>
 				<View style={styles.type}>
@@ -49,6 +73,35 @@ export default class AddThought extends Component {
 						clickHandler={this.handleTypeChange}
 					/>
 				</View>
+				<View style={styles.form}>
+					<Form>
+						<Item>
+							<Input
+								placeholder="Username"
+								value={username}
+								onChangeText={value => {
+									this.handleTextChange("username", value);
+								}}
+							/>
+						</Item>
+						<Item>
+							<TextInput
+								multiline={true}
+								numberOfLines={5}
+								placeholder="Your random thought"
+								value={thought}
+								onChangeText={value => {
+									this.handleTextChange("thought", value);
+								}}
+							/>
+						</Item>
+					</Form>
+					<View style={styles.submitBtnContainer}>
+						<Button style={styles.submitBtn} disabled={!formValid}>
+							<Text>Submit</Text>
+						</Button>
+					</View>
+				</View>
 			</View>
 		);
 	}
@@ -56,12 +109,24 @@ export default class AddThought extends Component {
 
 const styles = ScaledSheet.create({
 	container: {
+		flex: 1,
 		paddingHorizontal: "10@s"
 	},
 	type: {
 		flexDirection: "row",
-		flex: 1,
 		marginTop: "10@s",
 		justifyContent: "space-between"
+	},
+	form: {
+		marginTop: "20@s"
+	},
+	submitBtnContainer: {
+		justifyContent: "center",
+		marginTop: "10@s",
+		flexDirection: "row"
+	},
+	submitBtn: {
+		backgroundColor: "#F5820c",
+		paddingHorizontal: "20@s"
 	}
 });
