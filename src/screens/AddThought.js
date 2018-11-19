@@ -10,7 +10,8 @@ export default class AddThought extends Component {
 			headerTitle: "RNDM",
 			headerTitleStyle: {
 				color: "white"
-			}
+			},
+			headerLeft: null
 		};
 	};
 	render() {
