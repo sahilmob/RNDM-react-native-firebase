@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, TextInput } from "react-native";
+import { View } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
 import { Form, Item, Input, Button, Text } from "native-base";
 import LocalButton from "../components/ui/localbutton";
@@ -85,7 +85,7 @@ export default class AddThought extends Component {
 							/>
 						</Item>
 						<Item>
-							<TextInput
+							<Input
 								multiline={true}
 								numberOfLines={5}
 								placeholder="Your random thought"
