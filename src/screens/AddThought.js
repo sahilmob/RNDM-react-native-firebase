@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
-
+import { Button } from "native-base";
 import LocalButton from "../components/ui/localbutton";
 
 export default class AddThought extends Component {
@@ -17,13 +17,37 @@ export default class AddThought extends Component {
 			headerLeft: null
 		};
 	};
+
+	state = {
+		type: "funny"
+	};
+
+	handleTypeChange = type => {
+		this.setState({
+			type
+		});
+	};
+
 	render() {
+		const { type } = this.state;
 		return (
 			<View style={styles.container}>
 				<View style={styles.type}>
-					<LocalButton text="Funny" />
-					<LocalButton text="SERIOUS" />
-					<LocalButton text="CRAZY" />
+					<LocalButton
+						text="FUNNY"
+						activeType={type}
+						clickHandler={this.handleTypeChange}
+					/>
+					<LocalButton
+						text="SERIOUS"
+						activeType={type}
+						clickHandler={this.handleTypeChange}
+					/>
+					<LocalButton
+						text="CRAZY"
+						activeType={type}
+						clickHandler={this.handleTypeChange}
+					/>
 				</View>
 			</View>
 		);
@@ -36,9 +60,8 @@ const styles = ScaledSheet.create({
 	},
 	type: {
 		flexDirection: "row",
-		backgroundColor: "red",
 		flex: 1,
-		justifyContent: "space-between",
-		marginTop: "10@s"
+		marginTop: "10@s",
+		justifyContent: "space-between"
 	}
 });
