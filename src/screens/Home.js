@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { TouchableNativeFeedback, Text, View } from "react-native";
 import { Header, Left, Right, Fab } from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import { ScaledSheet, scale } from "react-native-size-matters";
+import { ScaledSheet } from "react-native-size-matters";
 
 export default class Home extends Component {
 	render() {
@@ -54,10 +54,10 @@ const styles = ScaledSheet.create({
 		color: "white"
 	},
 	ellipsisBtn: {
-		width: scale(20),
-		height: scale(20),
+		width: "20@s",
+		height: "20@s",
 		backgroundColor: "#1e1e1e",
-		borderRadius: scale(10),
+		borderRadius: "10@s",
 		alignItems: "center",
 		justifyContent: "center"
 	},
