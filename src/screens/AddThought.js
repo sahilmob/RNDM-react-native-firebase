@@ -65,15 +65,20 @@ export default class AddThought extends Component {
 
 	handleSubmit = () => {
 		const { username, thought, type } = this.state;
+		const {
+			navigation: { navigate }
+		} = this.props;
 		const ref = firebase
 			.firestore()
 			.collection("thoughts")
 			.add({
 				username,
 				thought,
-				category: type
+				category: type,
+				date: Date.now()
 			})
 			.then(result => {
+				navigate("Home");
 				this.setState({
 					type: "funny",
 					username: "",
