@@ -27,14 +27,14 @@ export default class AddThought extends Component {
 		formValid: false
 	};
 
-	componentDidMount() {
-		firebase
-			.auth()
-			.signInAnonymously()
-			.then(user => {
-				console.log(user.isAnonymous);
-			});
-	}
+	// componentDidMount() {
+	// 	firebase
+	// 		.auth()
+	// 		.signInAnonymously()
+	// 		.then(user => {
+	// 			console.log(user);
+	// 		});
+	// }
 
 	handleTypeChange = type => {
 		this.setState({
@@ -61,6 +61,29 @@ export default class AddThought extends Component {
 				}
 			}
 		);
+	};
+
+	handleSubmit = () => {
+		const { username, thought, type } = this.state;
+		const ref = firebase
+			.firestore()
+			.collection("thoughts")
+			.add({
+				username,
+				thought,
+				category: type
+			})
+			.then(result => {
+				this.setState({
+					type: "funny",
+					username: "",
+					thought: "",
+					formValid: false
+				});
+			})
+			.catch(err => {
+				console.log(err);
+			});
 	};
 
 	render() {
@@ -108,7 +131,11 @@ export default class AddThought extends Component {
 						</Item>
 					</Form>
 					<View style={styles.submitBtnContainer}>
-						<Button style={styles.submitBtn} disabled={!formValid}>
+						<Button
+							style={styles.submitBtn}
+							disabled={!formValid}
+							onPress={this.handleSubmit}
+						>
 							<Text>Submit</Text>
 						</Button>
 					</View>
