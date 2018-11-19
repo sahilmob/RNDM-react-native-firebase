@@ -56,3 +56,4 @@ buck-out/
 *.jsbundle
 
 firebase.js
+android/app/google-services.json
