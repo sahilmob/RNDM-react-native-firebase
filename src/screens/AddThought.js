@@ -75,7 +75,7 @@ export default class AddThought extends Component {
 				username,
 				thought,
 				category: type,
-				date: Date.now()
+				date: new Date()
 			})
 			.then(result => {
 				navigate("Home");
