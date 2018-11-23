@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { TouchableNativeFeedback, Text, View } from "react-native";
-import { Header, Left, Right, Fab } from "native-base";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import { View } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
+import { Form, Item, Input, Button, Text, Fab } from "native-base";
+import firebase from "react-native-firebase";
+import Icon from "react-native-vector-icons/FontAwesome5";
+
+import LocalButton from "../components/ui/localbutton";
 
 export default class Home extends Component {
 	static navigationOptions = navProps => {
@@ -16,9 +19,44 @@ export default class Home extends Component {
 			}
 		};
 	};
+
+	state = {
+		type: "funny"
+	};
+
+	handleTypeChange = type => {
+		this.setState({
+			type
+		});
+	};
+
 	render() {
+		const { type } = this.state;
+
 		return (
 			<View style={styles.container}>
+				<View style={styles.type}>
+					<LocalButton
+						text="FUNNY"
+						activeType={type}
+						clickHandler={this.handleTypeChange}
+					/>
+					<LocalButton
+						text="SERIOUS"
+						activeType={type}
+						clickHandler={this.handleTypeChange}
+					/>
+					<LocalButton
+						text="CRAZY"
+						activeType={type}
+						clickHandler={this.handleTypeChange}
+					/>
+					<LocalButton
+						text="POPULAR"
+						activeType={type}
+						clickHandler={this.handleTypeChange}
+					/>
+				</View>
 				<Fab
 					position="bottomRight"
 					style={styles.fab}
@@ -52,13 +90,10 @@ const styles = ScaledSheet.create({
 	headerText: {
 		color: "white"
 	},
-	ellipsisBtn: {
-		width: "20@s",
-		height: "20@s",
-		backgroundColor: "#1e1e1e",
-		borderRadius: "10@s",
-		alignItems: "center",
-		justifyContent: "center"
+	type: {
+		flexDirection: "row",
+		marginTop: "10@s",
+		justifyContent: "space-between"
 	},
 	fab: {
 		backgroundColor: "#F5820c"
